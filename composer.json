@@ -14,7 +14,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "kruglyak\\redactor": "src/"
+            "kruglyak\\redactor\\": "src/"
         }
     },
     "minimum-stability": "stable"
