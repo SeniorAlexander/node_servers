@@ -1,10 +1,10 @@
-# Testing Node Servers
+# Test Node Servers
 
 ## Installation and usage
 
 1.  Install all dependencies `npm install`
 2.  Config port in `run.js` file
-3.  Run one of these servers `node `
+3.  Run one of these servers `node run.js express`
 4.  Run test `autocannon -c 50 -d 30 -m POST http://localhost:4999`
 
 ## Shoot results for (Windows 10, 32 Gb RAM, i7-9700f, NodeJs v13.05.0)
