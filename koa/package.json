@@ -1,0 +1,14 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "Testing nodejs servers",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeniorAlexander/node_servers.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-route": "^3.0.2"
+  }
+}

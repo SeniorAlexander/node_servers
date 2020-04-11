@@ -1,0 +1,22 @@
+{
+  "name": "node_servers",
+  "version": "1.0.0",
+  "description": "Testing nodejs servers",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeniorAlexander/node_servers.git"
+  },
+  "author": "Alexander Kruglyak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeniorAlexander/node_servers/issues"
+  },
+  "homepage": "https://github.com/SeniorAlexander/node_servers#readme",
+  "dependencies": {
+    "autocannon": "^4.6.0"
+  }
+}

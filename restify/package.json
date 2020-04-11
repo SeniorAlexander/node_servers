@@ -1,0 +1,14 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "Testing nodejs servers",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeniorAlexander/node_servers.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "node-gyp": "^5.0.5",
+    "restify": "^8.5.1"
+  }
+}

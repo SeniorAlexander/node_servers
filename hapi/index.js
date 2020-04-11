@@ -1,0 +1,1 @@
+module.exports.hapi = require('@hapi/hapi')

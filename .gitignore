@@ -1,1 +1,15 @@
 .idea/
+package-lock.json
+/express/node_modules/*
+/fastify/*
+!/fastify/index.js
+!/fastify/package.json
+/hapi/*
+!/hapi/index.js
+!/hapi/package.json
+/koa/*
+!/koa/index.js
+!/koa/package.json
+/restify/*
+!/restify/index.js
+!/restify/package.json

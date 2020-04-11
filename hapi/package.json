@@ -1,0 +1,13 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "Testing nodejs servers",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeniorAlexander/node_servers.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^19.1.1"
+  }
+}
