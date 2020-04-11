@@ -4,8 +4,8 @@ const server = process.argv[2]
 
 const fastify   = 'fastify' // ~ 1106k requests in 30.07s, 180 MB read
 const koa       = 'koa'     // ~ 817k requests in 30.06s, 130 MB read
+const restify   = 'restify' // ~ 724k requests in 30.06s, 125 MB read
 const express   = 'express' // ~ 612k requests in 30.06s, 140 MB read
-const restify   = 'restify' // ~ 601k requests in 30.05s, 104 MB read
 const hapi      = 'hapi'    // ~ 471k requests in 30.05s, 86.7 MB read
 const port      = 4999
 let connections = { get:0, post:0 }
@@ -36,9 +36,6 @@ if(server === fastify) {
 if(server === restify) {
   const restify = require('./restify').restify
   const server = restify.createServer({ name: 'restify', version: '1.0.0' });
-  server.use(restify.plugins.acceptParser(server.acceptable));
-  server.use(restify.plugins.queryParser());
-  server.use(restify.plugins.bodyParser());
   server.get('/', function (req, res, next) {connections.get++; res.send('Restify Request | GET') })
   server.post('/', function (req, res, next) {connections.post++; res.send('Restify Request | POST') })
   server.listen(port, function () { console.log('============== Restify working =============='); });
