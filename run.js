@@ -2,6 +2,7 @@ exit = (log='Server exit') => { console.log(log); process.exit(1) }
 if(!process.argv[2]){ exit('########## NO ARGUMENTS ##########');  }
 const server = process.argv[2]
 
+const node      = 'node'    // ~ 1338k requests in 30.07s, 189 MB read
 const fastify   = 'fastify' // ~ 1106k requests in 30.07s, 180 MB read
 const koa       = 'koa'     // ~ 817k requests in 30.06s, 130 MB read
 const restify   = 'restify' // ~ 724k requests in 30.06s, 125 MB read
@@ -10,9 +11,27 @@ const hapi      = 'hapi'    // ~ 471k requests in 30.05s, 86.7 MB read
 const port      = 4999
 let connections = { get:0, post:0 }
 
-if (![fastify, restify, express, koa, hapi].includes(server)){ exit('Not valid server name!') }
+if (![fastify, restify, express, koa, hapi, node].includes(server)){ exit('Not valid server name!') }
 
 setInterval(function () {console.info(`| GET - ${connections['get']} | POST - ${connections['post']} |`)}, 5000)
+
+// #=================================# NODE #=================================#
+if(server === node) {
+  var http = require('http');
+  http.createServer(function (req, res) {
+    if (req.method === 'GET') {
+        connections.get++;
+        res.write('Express Request | GET');
+        res.end();
+    }
+    if (req.method === 'POST') {
+        connections.post++;
+        res.write('Express Request | POST');
+        res.end();
+    }
+  }).listen(port);
+  console.log('----------- Node working -----------');
+}
 
 // #=================================# EXPRESS #=================================#
 if(server === express) {
@@ -20,7 +39,7 @@ if(server === express) {
   const app = express()
   app.get('/', function (req, res)  {connections.get++; return res.send('Express Request | GET') })
   app.post('/', function (req, res) {connections.post++; return res.send('Express Request | POST') })
-  try { console.log('============== Express working =============='); app.listen(port); }
+  try { console.log('----------- Express working -----------'); app.listen(port); }
   catch (err) { exit('Express error') }
 }
 
@@ -38,7 +57,7 @@ if(server === restify) {
   const server = restify.createServer({ name: 'restify', version: '1.0.0' });
   server.get('/', function (req, res, next) {connections.get++; res.send('Restify Request | GET') })
   server.post('/', function (req, res, next) {connections.post++; res.send('Restify Request | POST') })
-  server.listen(port, function () { console.log('============== Restify working =============='); });
+  server.listen(port, function () { console.log('----------- Restify working -----------'); });
 }
 // #=================================# KOA #=================================#
 if(server === koa) {
@@ -48,7 +67,7 @@ if(server === koa) {
   app.use(route.get('/', function (req) { connections.get++; this.body =  'Koa Request | GET' }));
   app.use(route.post('/', function (req) { connections.post++; this.body =  'Koa Request | POST' }));
   app.listen(port);
-  console.log('============== Koa working ==============');
+  console.log('----------- Koa working -----------');
 }
 // #=================================# HAPI #=================================#
 if(server === hapi){
@@ -61,7 +80,7 @@ if(server === hapi){
     server.route({ method: 'GET', path: '/', handler: (request, h) => {connections.get++; return 'Hapi Request | GET'; } });
     server.route({ method: 'POST', path: '/', handler: (request, h) => {connections.post++; return 'Hapi Request | POST'; } });
     await server.start();
-    console.log('============== Hapi working ==============');
+    console.log('----------- Hapi working -----------');
   };
   init();
 
