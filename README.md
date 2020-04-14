@@ -11,7 +11,7 @@
 
 `autocannon -c 50 -d 30 -m POST http://localhost:4999`
 
-1  NODE     ~ 1338k requests in 30.07s, 189 MB read
+1. NODE     ~ 1338k requests in 30.07s, 189 MB read
 2. FASTIFY  ~ 1106k requests in 30.07s, 180 MB read
 3. KOA      ~ 817k requests in 30.06s, 130 MB read
 4. EXPRESS  ~ 612k requests in 30.06s, 140 MB read
