@@ -21,12 +21,12 @@ if(server === node) {
   http.createServer(function (req, res) {
     if (req.method === 'GET') {
         connections.get++;
-        res.write('Express Request | GET');
+        res.write('Node Request | GET');
         res.end();
     }
     if (req.method === 'POST') {
         connections.post++;
-        res.write('Express Request | POST');
+        res.write('Node Request | POST');
         res.end();
     }
   }).listen(port);
