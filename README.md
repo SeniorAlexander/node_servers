@@ -14,6 +14,6 @@
 1. NODE     ~ 1338k requests in 30.07s, 189 MB read
 2. FASTIFY  ~ 1106k requests in 30.07s, 180 MB read
 3. KOA      ~ 817k requests in 30.06s, 130 MB read
-4. EXPRESS  ~ 612k requests in 30.06s, 140 MB read
-5. RESTIFY  ~ 601k requests in 30.05s, 104 MB read
+4. RESTIFY  ~ 724k requests in 30.05s, 124 MB read
+5. EXPRESS  ~ 612k requests in 30.06s, 140 MB read
 6. HAPI     ~ 471k requests in 30.05s, 86.7 MB read
